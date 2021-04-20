@@ -11,15 +11,14 @@ def tableroVacio():
 	]
 
 def completarTableroEnOrden(secuencia, tablero):
-	ban = validarSecuencia(secuencia)
-	if ban != 1:
-		for x in range(0, len(secuencia)):
-			if x % 2 == 0:
-				soltarFichaEnColumna(1, secuencia[x], tablero)
-			else:
-				soltarFichaEnColumna(2, secuencia[x], tablero)
+	for x in range(0, len(secuencia)):
+		if x % 2 == 0:
+			soltarFichaEnColumna(1, secuencia[x], tablero)
+		else:
+			soltarFichaEnColumna(2, secuencia[x], tablero)
 	return tablero
 
+"""
 def validarSecuencia(secuencia):
 	ban = 0
 	for x in range(0, len(secuencia)):
@@ -28,29 +27,29 @@ def validarSecuencia(secuencia):
 			ban = 1
 			break
 	return ban
+"""
 
 def soltarFichaEnColumna(ficha, columna, tablero):
-	ban = validarSecuencia(secuencia)
-	if ban != 1:
-		for fila in range(6, 0, -1):
-			if tablero[fila - 1][columna - 1] == 0:
-				tablero[fila - 1][columna - 1] = ficha
-				return
+	for fila in range(6, 0, -1):
+		if tablero[fila - 1][columna - 1] == 0:
+			tablero[fila - 1][columna - 1] = ficha
+			return
 
 
 def dibujarTablero(tablero):
-	ban = validarSecuencia(secuencia)
-	if ban != 1:
-		for fila in range(0, 6):
-			for columna in range(0, 7):
-				print(tablero[fila][columna], end = " ")
-			print('')
-	else:
-		print("Secuencia incorrecta!! Por favor vuelva a intentarlo.")
+	for fila in range(0, 6):
+		for columna in range(0, 7):
+			print(tablero[fila][columna], end = " ")
+		print('')
 
 
-dibujarTablero(
-	completarTableroEnOrden(
-		secuencia, tableroVacio()
-		)
-	)
+def secuenciaValida(secuencia):
+	for columna in secuencia:
+		if columna < 1 or columna > 7:
+			return False
+	return True
+
+if secuenciaValida(secuencia):
+	dibujarTablero(completarTableroEnOrden(secuencia, tableroVacio()))
+else:
+	print("Las columnas deberían ir del 1 al 7")
