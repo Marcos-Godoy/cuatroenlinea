@@ -10,6 +10,13 @@ def tableroVacio():
 		[0, 0, 0, 0, 0, 0, 0],
 	]
 
+def contenidoColumna(nro_columna, tablero):
+	columna = []
+	for fila in tablero:
+		celda = fila[nro_columna - 1]
+		columna.append(celda)
+	return columna
+
 def completarTableroEnOrden(secuencia, tablero):
 	for x in range(0, len(secuencia)):
 		if x % 2 == 0:
