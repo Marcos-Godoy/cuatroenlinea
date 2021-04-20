@@ -1,4 +1,5 @@
 secuencia = [1, 2, 3, 1, 1, 6]
+tablero = []
 
 def tableroVacio():
 	return [
@@ -57,6 +58,9 @@ def secuenciaValida(secuencia):
 	return True
 
 if secuenciaValida(secuencia):
-	dibujarTablero(completarTableroEnOrden(secuencia, tableroVacio()))
+	tablero = completarTableroEnOrden(secuencia, tableroVacio())
+	dibujarTablero(tablero)
 else:
 	print("Las columnas deberían ir del 1 al 7")
+
+print(contenidoColumna(2, tablero))
