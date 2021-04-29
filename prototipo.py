@@ -18,6 +18,13 @@ def contenidoColumna(nro_columna, tablero):
 		columna.append(celda)
 	return columna
 
+def contenidoFila(nro_fila, tablero):
+	fila = []
+	for columna in tablero:
+		celda = columna[nro_fila - 1]
+		fila.append(celda)
+	return fila
+
 def completarTableroEnOrden(secuencia, tablero):
 	for x in range(0, len(secuencia)):
 		if x % 2 == 0:
@@ -25,6 +32,17 @@ def completarTableroEnOrden(secuencia, tablero):
 		else:
 			soltarFichaEnColumna(2, secuencia[x], tablero)
 	return tablero
+
+def mostrarColumnas(tablero):
+	for colum in range(0, 7):
+		for fil in range(0, 6):
+			print(tablero[fil][colum], end = ", ")
+
+def mostrarFilas(tablero):
+	for fil in range(0, 6):
+		for colum in range(0, 7):
+			print(tablero[fil][colum], end = ", ")
+
 
 """
 def validarSecuencia(secuencia):
@@ -64,3 +82,9 @@ else:
 	print("Las columnas deberían ir del 1 al 7")
 
 print(contenidoColumna(2, tablero))
+print()
+print(contenidoFila(3,tablero))
+print()
+mostrarColumnas(tablero)
+print()
+mostrarFilas(tablero)
