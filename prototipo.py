@@ -1,6 +1,3 @@
-secuencia = [1, 2, 3, 1, 1, 6]
-tablero = []
-
 def tableroVacio():
 	return [
 		[0, 0, 0, 0, 0, 0, 0],
@@ -80,6 +77,12 @@ def secuenciaValida(secuencia):
 			return False
 	return True
 
+secuencia_texto = input("Ingrese la secuencia de numeros: ")
+secuencia = []
+for items in secuencia_texto.split(','):
+	secuencia.append(int(items))
+
+tablero = []
 if secuenciaValida(secuencia):
 	tablero = completarTableroEnOrden(secuencia, tableroVacio())
 	dibujarTablero(tablero)
