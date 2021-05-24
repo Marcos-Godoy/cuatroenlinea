@@ -1,6 +1,3 @@
-secuencia = [1, 2, 3, 1, 1, 6]
-tablero = []
-
 def tableroVacio():
 	return [
 		[0, 0, 0, 0, 0, 0, 0],
@@ -20,9 +17,11 @@ def contenidoColumna(nro_columna, tablero):
 
 def contenidoFila(nro_fila, tablero):
 	fila = []
-	for columna in tablero:
-		celda = columna[nro_fila - 1]
-		fila.append(celda)
+	for x in range(0, 6):
+		if nro_fila == x:
+			for columna in range(0, 7):
+				celda = tablero[x][columna]
+				fila.append(celda)
 	return fila
 
 def completarTableroEnOrden(secuencia, tablero):
@@ -80,6 +79,12 @@ def secuenciaValida(secuencia):
 			return False
 	return True
 
+secuencia_texto = input("Ingrese la secuencia de numeros: ")
+secuencia = []
+for items in secuencia_texto.split(','):
+	secuencia.append(int(items))
+
+tablero = []
 if secuenciaValida(secuencia):
 	tablero = completarTableroEnOrden(secuencia, tableroVacio())
 	dibujarTablero(tablero)
@@ -89,7 +94,7 @@ else:
 print()
 print(contenidoColumna(2, tablero))
 print()
-print(contenidoFila(3,tablero))
+print(contenidoFila(5,tablero))
 print()
 mostrarColumnas(tablero)
 print()
