@@ -32,16 +32,23 @@ def completarTableroEnOrden(secuencia, tablero):
 			soltarFichaEnColumna(2, secuencia[x], tablero)
 	return tablero
 
+
+#agregue los returns para hacer los tests.
 def mostrarColumnas(tablero):
+	columna = []
 	for colum in range(0, 7):
 		for fil in range(0, 6):
+			columna.append(tablero[fil][colum])
 			print(tablero[fil][colum], end = ", ")
+	return columna
 
 def mostrarFilas(tablero):
+	fila = []
 	for fil in range(0, 6):
 		for colum in range(0, 7):
+			fila.append(tablero[fil][colum])
 			print(tablero[fil][colum], end = ", ")
-
+	return fila
 
 """
 def validarSecuencia(secuencia):
@@ -79,12 +86,16 @@ def secuenciaValida(secuencia):
 			return False
 	return True
 
+secuencia = [1, 2, 3, 1, 1, 6]
+tablero = []
+"""
 secuencia_texto = input("Ingrese la secuencia de numeros: ")
 secuencia = []
 for items in secuencia_texto.split(','):
 	secuencia.append(int(items))
 
 tablero = []
+"""
 if secuenciaValida(secuencia):
 	tablero = completarTableroEnOrden(secuencia, tableroVacio())
 	dibujarTablero(tablero)
